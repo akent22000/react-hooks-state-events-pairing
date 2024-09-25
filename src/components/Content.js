@@ -5,16 +5,6 @@ import CommentItem from "./CommentItem";
 function Content({ video, comments }) {
   const [countUpvotes, setUpvotesCount] = useState(video.upvotes)
   const [countDownvotes, setDownvotesCount] = useState(video.downvotes)
-
-
-  function handleUpvotesClick() {
-    setUpvotesCount(countUpvotes + 1)
-  }
-
-  function handleDownvotesClick() {
-    setDownvotesCount(countDownvotes - 1)
-  }
-
   const [showComment, setComment] = useState(true);
 
   const toggleComment = () => {
@@ -45,48 +35,18 @@ function Content({ video, comments }) {
         </div>
       </div>
       <div class="extra content">
-        <button onClick={handleUpvotesClick}>{countUpvotes}👍</button>
-        <button onClick={handleDownvotesClick}>{countDownvotes}👎</button>
+        <button onClick={() => setUpvotesCount(countUpvotes + 1)}>{countUpvotes}👍</button>
+        <button onClick={() => setDownvotesCount(countDownvotes - 1)}>{countDownvotes}👎</button>
       </div>
-
-
       <div>
-        {/* <h2>Comments {comments.length}</h2> */}
         <button onClick={toggleComment}>
           {showComment ? 'Hide Text' : 'Show Text'}
         </button>
         {showComment && <div><h2>Comments {comments.length}</h2> <p>{commentElements}</p></div>}
       </div>
-
-      {/* 
-      <h2>Comments {comments.length}</h2>
-      <div id="comments-list">{commentElements}</div> */}
     </div>
 
   );
 }
 
 export default Content;
-
-
-// const video = {
-//   id: 1,
-//   title: "React Today and Tomorrow and 90% Cleaner React With Hooks",
-//   embedUrl: "https://www.youtube.com/embed/dpw9EHDh2bM",
-//   views: 730707,
-//   createdAt: "Oct 26, 2018",
-//   upvotes: 9210,
-//   downvotes: 185,
-//   comments: [
-//     {
-//       id: 1,
-//       user: "duanebot",
-//       comment: "first!",
-//     },
-//     {
-//       id: 2,
-//       user: "gaeron",
-//       comment: "What a great tutorial!",
-//     },
-//   ],
-// };
